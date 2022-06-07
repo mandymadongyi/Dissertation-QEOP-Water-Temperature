@@ -22,7 +22,7 @@ void setup() {
 }
 
 void loop() {
-  wake();
+  
 
   float celsius = readDs18b20();
   uint16_t temperature = round(100 * celsius);
@@ -39,10 +39,8 @@ void loop() {
 
 
   }
-  delay(1000);
-  prepareToSleep();
-  modem.sleep(10000);
-  LowPower.deepSleep(10000);
+  
+  LowPower.deepSleep(1800000);
 }
 
 
