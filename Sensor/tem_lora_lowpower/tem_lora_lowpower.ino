@@ -12,7 +12,7 @@ float Temp_Buffer = 0;
 
 LoRaModem modem;
 const char *appEui = "0000000000000000";
-const char *appKey = "3E017976E657A77E5CE3838DDEA0C702";
+const char *appKey = "16E5577D158C89C8AD877E823BA5F161";
 
 void setup() {
 
@@ -40,7 +40,8 @@ void loop() {
 
   }
   
-  LowPower.deepSleep(1800000);
+  LowPower.deepSleep(1799000);
+  
 }
 
 

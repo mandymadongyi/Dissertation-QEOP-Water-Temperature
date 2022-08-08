@@ -1,7 +1,3 @@
-
-
-
-
 #include <Arduino.h>
 #include <MKRWAN.h>
 #include <OneWire.h>
@@ -17,7 +13,7 @@ long interval = 30000;
 
 LoRaModem modem;
 const char *appEui = "0000000000000000";
-const char *appKey = "3E017976E657A77E5CE3838DDEA0C702";
+const char *appKey = "16E5577D158C89C8AD877E823BA5F161";
 
 void setup() {
   // put your setup code here, to run once:
