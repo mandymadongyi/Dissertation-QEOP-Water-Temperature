@@ -2,7 +2,7 @@
 #include <MKRWAN.h>
 #include <OneWire.h>
 
-
+// this code is used to sense temperature and then send to ttn, make sure change appkey when using for another board
 #define freqPlan TTN_FP_EU868
 
 OneWire  ds(2);
@@ -50,6 +50,9 @@ void loop() {
   payload[0] = highByte(temperature);
   payload[1] = lowByte(temperature);
 
+  
+// below is used to set the sending interval, ttn will crash if send message too frequently
+
   if (millis() - lastupload > interval && temperature > 0) {
     int err;
     modem.beginPacket();
@@ -67,7 +70,7 @@ void loop() {
    delay(1000);
 }
 
-
+// below defines the function to read temperature
 
 float readDs18b20()
 {

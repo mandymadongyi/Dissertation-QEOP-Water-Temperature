@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
 
-class PagePondA extends StatefulWidget {
-  const PagePondA({Key? key}) : super(key: key);
+class PageBeforeJunction extends StatefulWidget {
+  const PageBeforeJunction({Key? key}) : super(key: key);
 
   @override
-  State<PagePondA> createState() => _PagePondAState();
+  State<PageBeforeJunction> createState() => _PageBeforeJunctionState();
 }
 
-class _PagePondAState extends State<PagePondA> {
+class _PageBeforeJunctionState extends State<PageBeforeJunction> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
             appBar: AppBar(
-              title: const Text('Pond A'),
+              title: const Text('Before Junction'),
               leading: IconButton(
                 icon: Icon(Icons.arrow_back, color: Colors.white),
                 onPressed: () => Navigator.of(context).pop(),
@@ -23,7 +23,7 @@ class _PagePondAState extends State<PagePondA> {
             ),
             body: Column(
               children: [
-                FixedPondA(),
+                FixedBeforeJunction(),
                 Padding(
                   padding: const EdgeInsets.only(left: 50.0),
                   child: TemperatureView(),
@@ -33,8 +33,8 @@ class _PagePondAState extends State<PagePondA> {
   }
 }
 
-class FixedPondA extends StatelessWidget {
-  const FixedPondA({Key? key}) : super(key: key);
+class FixedBeforeJunction extends StatelessWidget {
+  const FixedBeforeJunction({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class FixedPondA extends StatelessWidget {
             padding: const EdgeInsets.only(left: 0.0, top: 40.0),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(30),
-              child: Image.asset('image/PondA.jpg'),
+              child: Image.asset('image/BeforeJunction.jpg'),
             ),
           ),
         ],
@@ -62,7 +62,7 @@ class TemperatureView extends StatefulWidget {
 }
 
 class TemperatureViewState extends State<TemperatureView> {
-  String? TemperaturePondA;
+  String? TemperatureBeforeJunction;
 
   final client =
       MqttServerClient('eu1.cloud.thethings.network:1883', 'mandymadongyimsm');
@@ -71,7 +71,7 @@ class TemperatureViewState extends State<TemperatureView> {
   void initState() {
     super.initState();
 
-    TemperaturePondA = "23.5 degree celcius";
+    TemperatureBeforeJunction = "Waiting for MQTT message...";
 
     startMQTT();
   }
@@ -90,9 +90,9 @@ class TemperatureViewState extends State<TemperatureView> {
         child: Column(
       children: [
         Padding(
-          padding: const EdgeInsets.only(right: 40, top: 40.0),
+          padding: const EdgeInsets.only(top: 40.0),
           child: Text(
-            'Temperature: $TemperaturePondA',
+            'Temperature: $TemperatureBeforeJunction',
             textAlign: TextAlign.left,
             style: TextStyle(fontSize: 20),
           ),
@@ -104,7 +104,7 @@ class TemperatureViewState extends State<TemperatureView> {
   updateList(String s, int i) {
     setState(() {
       if (i == 0) {
-        TemperaturePondA = s;
+        TemperatureBeforeJunction = s;
       }
     });
   }
@@ -129,7 +129,7 @@ class TemperatureViewState extends State<TemperatureView> {
           'ERROR Mosquitto client connection failed - disconnecting, state is ${client.connectionStatus!.state}');
       client.disconnect();
     }
-    const topic1 = 'v3/dissertationwater@ttn/devices/eui-a8610a3135339219/up';
+    const topic1 = 'v3/dissertationwater@ttn/devices/eui-a8610a3135318a18/up';
     client.subscribe(topic1, MqttQos.atMostOnce);
     client.updates!.listen((List<MqttReceivedMessage<MqttMessage?>>? c) {
       final receivedMessage = c![0].payload as MqttPublishMessage;

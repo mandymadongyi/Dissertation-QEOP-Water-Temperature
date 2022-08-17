@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'PortlandsLakeEast.dart';
 import 'PondA.dart';
-//import 'PondB.dart';
-//import 'BeforeJunction.dart';
-//import 'AfterJunction.dart';
+import 'PondB.dart';
+import 'BeforeJunction.dart';
+import 'AfterJunction.dart';
 
 void main() {
   runApp(MyApp());
@@ -51,6 +51,7 @@ class _HomepageState extends State<Homepage> {
             )));
   }
 }
+// app bar
 
 class Namelist extends StatelessWidget {
   @override
@@ -59,7 +60,7 @@ class Namelist extends StatelessWidget {
       child: Column(children: [
         Column(children: [
           ElevatedButton(
-            child: Text('PortlandsLakeEast (Green)'),
+            child: Text('1. Portlands Lake East'),
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return PagePortlandsLakeEast();
@@ -70,26 +71,44 @@ class Namelist extends StatelessWidget {
             ),
           ),
           ElevatedButton(
-            child: Text('PondA (Yellow)'),
+            child: Text('2. Pond A'),
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return PagePondA();
               }));
             },
           ),
-          // ElevatedButton(
-          //   child: Text('PondB'),
-          //   onPressed: () {
-          //     Navigator.push(context, MaterialPageRoute(builder: (context) {
-          //       return PagePondB();
-          //     }));
-          //   },
-          // )
+          ElevatedButton(
+            child: Text('3. Pond B'),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return PagePondB();
+              }));
+            },
+          ),
+          ElevatedButton(
+            child: Text('4. Before Junction'),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return PageBeforeJunction();
+              }));
+            },
+          ),
+          ElevatedButton(
+            child: Text('5. After Junction'),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return PageAfterJunction();
+              }));
+            },
+          )
         ]),
       ]),
     );
   }
 }
+
+// buttons
 
 class Notification extends StatefulWidget {
   const Notification({Key? key}) : super(key: key);
@@ -105,17 +124,10 @@ class _NotificationState extends State<Notification> {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 2.0, top: 2.0),
+            padding: const EdgeInsets.only(left: 2.0, top: 20.0),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(30),
               child: Image.asset('image/Map.jpg'),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 2.0, top: 2.0),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(30),
-              child: Image.asset('image/All.jpg'),
             ),
           ),
         ],
@@ -123,3 +135,4 @@ class _NotificationState extends State<Notification> {
     );
   }
 }
+// map

@@ -66,7 +66,6 @@ flutter:
     - image/PondB.jpg
     - image/BeforeJunction.jpg
     - image/AfterJunction.jpg
-    - image/All.jpg
     - image/Map.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see

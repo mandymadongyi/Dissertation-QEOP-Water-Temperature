@@ -1,4 +1,6 @@
-
+// this is the final code to upload for this project
+// this is almost the same with tem_lora.ino, but adding a sleepmode
+// remember to reset the board before uploading this file, otherwise the system is in sleep mode and won't be able to find a port for uploading
 
 #include <MKRWAN.h>
 #include <OneWire.h>
@@ -39,6 +41,9 @@ void loop() {
 
 
   }
+
+  // here defines the system sleep length
+
   
   LowPower.deepSleep(1799000);
   

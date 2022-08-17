@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
+// five detail pages are similar, need to change mqtt topic when adding a new one
 
 class PagePortlandsLakeEast extends StatefulWidget {
   const PagePortlandsLakeEast({Key? key}) : super(key: key);
@@ -15,8 +16,7 @@ class _PagePortlandsLakeEastState extends State<PagePortlandsLakeEast> {
     return MaterialApp(
         home: Scaffold(
             appBar: AppBar(
-              title:
-                  const Text('PortlandsLakeEast Water Temperature Monitoring'),
+              title: const Text('Portlands Lake East'),
               leading: IconButton(
                 icon: Icon(Icons.arrow_back, color: Colors.white),
                 onPressed: () => Navigator.of(context).pop(),
@@ -43,7 +43,7 @@ class FixedPortlandsLakeEast extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 75.0, top: 40.0),
+            padding: const EdgeInsets.only(left: 0.0, top: 40.0),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(30),
               child: Image.asset('image/PortlandsLakeEast.jpg'),
@@ -72,7 +72,7 @@ class TemperatureViewState extends State<TemperatureView> {
   void initState() {
     super.initState();
 
-    TemperaturePortlandsLakeEast = "wait a second";
+    TemperaturePortlandsLakeEast = "wait a second...";
 
     startMQTT();
   }
@@ -90,10 +90,13 @@ class TemperatureViewState extends State<TemperatureView> {
     return Container(
         child: Column(
       children: [
-        Text(
-          'Temperature: $TemperaturePortlandsLakeEast',
-          textAlign: TextAlign.left,
-          style: TextStyle(fontSize: 20),
+        Padding(
+          padding: const EdgeInsets.only(right: 40.0, top: 40),
+          child: Text(
+            'Temperature: $TemperaturePortlandsLakeEast',
+            textAlign: TextAlign.left,
+            style: TextStyle(fontSize: 20),
+          ),
         ),
       ],
     ));

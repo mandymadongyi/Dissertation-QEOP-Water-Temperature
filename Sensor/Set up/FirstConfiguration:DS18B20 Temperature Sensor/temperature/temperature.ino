@@ -1,4 +1,4 @@
-
+// this is the example code (one wire) from arduino for ds18b20
 //#include <Arduino.h>
 
 #include <OneWire.h>

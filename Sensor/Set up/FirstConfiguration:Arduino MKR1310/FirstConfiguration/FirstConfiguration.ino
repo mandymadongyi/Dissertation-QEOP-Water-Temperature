@@ -4,6 +4,8 @@
   This example code is in the public domain.
 */
 
+// this is the example code from arduino to find device eui of mkr1310
+
 #include <MKRWAN.h>
 
 LoRaModem modem;
