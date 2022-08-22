@@ -4,6 +4,12 @@ import 'PondA.dart';
 import 'PondB.dart';
 import 'BeforeJunction.dart';
 import 'AfterJunction.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+// this code is used to show mqtt data and granfana records, however since there is no device deployed at the moment, don't wait for mqtt data in detail page
+
+final Uri _url = Uri.parse(
+    'https://snapshots.raintank.io/dashboard/snapshot/7ozqn7VkkNPYlVodx8jLCFYXfCBSZ8YU');
 
 void main() {
   runApp(MyApp());
@@ -46,12 +52,25 @@ class _HomepageState extends State<Homepage> {
                   padding: const EdgeInsets.only(top: 30.0),
                   child: Namelist(),
                 ),
-                Notification(),
+                Padding(
+                  padding: const EdgeInsets.only(left: 2.0, top: 20.0),
+                  child: ClipRRect(
+                      borderRadius: BorderRadius.circular(30),
+                      child: Image.asset('image/Map.jpg')),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20.0),
+                  child: ElevatedButton(
+                    onPressed: _launchUrl,
+                    child: Text('Interactive plot during experiment period'),
+                  ),
+                ),
               ],
             )));
   }
 }
 // app bar
+// four widgets here, from the top to down, text, name list of locations, map and url of grafana
 
 class Namelist extends StatelessWidget {
   @override
@@ -110,29 +129,8 @@ class Namelist extends StatelessWidget {
 
 // buttons
 
-class Notification extends StatefulWidget {
-  const Notification({Key? key}) : super(key: key);
-
-  @override
-  State<Notification> createState() => _NotificationState();
-}
-
-class _NotificationState extends State<Notification> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 2.0, top: 20.0),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(30),
-              child: Image.asset('image/Map.jpg'),
-            ),
-          ),
-        ],
-      ),
-    );
+Future<void> _launchUrl() async {
+  if (!await launchUrl(_url)) {
+    throw 'Could not launch $_url';
   }
 }
-// map
